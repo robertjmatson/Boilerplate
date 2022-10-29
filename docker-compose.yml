@@ -1,0 +1,11 @@
+services:
+  python:
+    #image: python:3.8.10
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - ./backend:/backend
+    ports:
+      - 8000:8000
+

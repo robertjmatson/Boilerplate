@@ -1,11 +1,23 @@
+volumes:
+  pgdata:
 services:
   python:
     #image: python:3.8.10
     build:
       context: .
-      dockerfile: docker/python/Dockerfile
+      dockerfile: docker/dev/python/Dockerfile
     volumes:
-      - ./backend:/backend
+      - ./backend:/app
     ports:
       - 8000:8000
-
+    command: python manage.py runserver 0.0.0.0:8000
+  postgres:
+    image: postgres:15.0
+    environment:
+      POSTGRES_USER: boiler
+      POSTGRES_DB: boiler
+      POSTGRES_PASSWORD: boiler
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

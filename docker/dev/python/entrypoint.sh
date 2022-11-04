@@ -33,4 +33,5 @@ fi
 export HOME=/home/$PYTHON_RUN_USER
 
 exec su -p ${PYTHON_RUN_USER} -s /bin/bash -c "$*"
+exec  "$*"
 #exec python manage.py runserver 0.0.0.0:8000

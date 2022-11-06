@@ -1,21 +1,24 @@
-import PropTypes from 'prop-types'
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Link } from "react-router-dom";
 
-const Header = (props) => {
-  return (
-    <header>
-        <h1 style={{ color: 'red', backgroundColor: 'black' }}>{props.title}</h1>
-        <p>{props.description}</p>
-    </header>
-  )
-}
+function Header() {
 
-Header.defaultProps = {
-    title: 'Default Title'
-}
-
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
+  return(
+    <React.Fragment>
+      <CssBaseline />
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            <Link to="/">Boiler Plate</Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  );
 }
 
 export default Header

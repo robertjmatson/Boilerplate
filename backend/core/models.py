@@ -8,7 +8,8 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
+    class Meta:
+        verbose_name_plural = "categories"
 class Post(models.Model):
 
     class PostObjects(models.Manager):
@@ -22,11 +23,11 @@ class Post(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=1)
     title = models.CharField(max_length=250)
-    exceprt = models.TextField(null=True)
+    excerpt = models.TextField(null=True)
     content = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='published')
     published = models.DateTimeField(default=timezone.now)
-    auther = models.ForeignKey( User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey( User, on_delete=models.CASCADE, related_name='posts')
     status = models.CharField(max_length=10, choices=options, default='published')
 
     objects = models.Manager() #default manager

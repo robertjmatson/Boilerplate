@@ -11,7 +11,7 @@ export const bpTheme = createTheme({
     },
     typography: {
         titles: {
-            fontSize: "4rem",
+            fontSize: "2rem",
             color: "#FF5733"
         }
     }

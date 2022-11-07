@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, CssBaseline, Button, ClickAwayListener, Grow, Paper, Popper, MenuItem, MenuList, Stack } from '@mui/material';
+import {AppBar, Toolbar, Typography, CssBaseline, Button, ClickAwayListener, Grow, Paper, Popper, MenuItem, MenuList } from '@mui/material';
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -36,7 +36,6 @@ function Header() {
 
     prevOpen.current = open;
   }, [open]);
-
   return(
     <React.Fragment>
       <CssBaseline />
@@ -46,44 +45,41 @@ function Header() {
             <Link to="/">Boiler Plate</Link>
           </Typography>
           <div>
-          <Button color="secondary" variant="contained" onClick={handleToggle}>
-            Account
-          </Button>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            placement="bottom-start"
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom-start' ? 'left top' : 'left bottom',
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      autoFocusItem={open}
-                      id="composition-menu"
-                      aria-labelledby="composition-button"
-                      onKeyDown={handleListKeyDown}
-                    >
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
-                      <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
+            <Button 
+              color="secondary" variant="contained" ref={anchorRef} id="composition-button" 
+              aria-controls={open ? 'composition-menu' : undefined} aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true" onClick={handleToggle}
+            >
+              Account
+            </Button>
+            <Popper
+              open={open} anchorEl={anchorRef.current} role={undefined} placement="bottom-start" transition disablePortal>
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="composition-menu"
+                        aria-labelledby="composition-button"
+                        onKeyDown={handleListKeyDown}
+                      >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My account</MenuItem>
+                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
           </div>
-
         </Toolbar>
       </AppBar>
     </React.Fragment>

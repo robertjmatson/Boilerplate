@@ -1,36 +1,70 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
+import {Box, Link, Grid, Typography, Container}from '@mui/material';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  bottom: 0,
-}));
+
+function Copyright() {
+	return (
+		<Typography variant="body2" color="textSecondary" align="center">
+			{'A BoilerPlate Application'}
+		</Typography>
+	);
+}
+
+const footers = [
+	{
+		title: 'Company',
+		description: ['Team', 'History', 'Contact us'],
+	},
+	{
+		title: 'Features',
+		description: [
+			'Cool stuff',
+			'Random feature',
+			'Team feature',
+			'Developer stuff',
+			'Another one',
+		],
+	},
+	{
+		title: 'Resources',
+		description: [
+			'Resource',
+			'Resource name',
+			'Another resource',
+			'Final resource',
+		],
+	},
+
+];
 
 function Footer() {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-        <Grid xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid xs={8}>
-          <Item>xs=8</Item>
-        </Grid>
-      </Grid>
-    </Box>
-  );
+	return (
+		<React.Fragment>
+			<Container maxWidth="md" component="footer">
+				<Grid container spacing={2} justify="space-evenly">
+					{footers.map((footer) => (
+						<Grid item xs={6} sm={3} key={footer.title}>
+							<Typography variant="h6" color="textPrimary" gutterBottom>
+								{footer.title}
+							</Typography>
+							<ul>
+								{footer.description.map((item) => (
+									<li key={item}>
+										<Link href="#" variant="subtitle1" color="textSecondary">
+											{item}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</Grid>
+					))}
+				</Grid>
+				<Box mt={5}>
+					<Copyright />
+				</Box>
+			</Container>
+		</React.Fragment>
+	);
 }
-export default Footer
+
+export default Footer;

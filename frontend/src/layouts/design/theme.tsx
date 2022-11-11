@@ -8,12 +8,5 @@ export const bpTheme = createTheme({
         secondary: {
             main:"#FF5733"
         }
-    },
-    typography: {
-        titles: {
-            fontSize: "2rem",
-            color: "#FF5733"
-        }
     }
-
 });

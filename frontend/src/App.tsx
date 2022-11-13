@@ -1,18 +1,27 @@
 import { useState } from 'react'
-import { Route, Routes } from "react-router-dom"
-import { Home } from "./pages/home/Home"
-import { About } from "./pages/About"
-import { NotFound } from "./pages/NotFound"
-import { Contact } from "./pages/Contact"
-  
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { routes as appRoutes } from "./routes";
+import { ThemeProvider } from "@mui/material";
+import { theme } from './design/theme';
+import Layout from './design/layout';
+
   function App() {
     return (
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contactus" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ThemeProvider theme={theme}>
+      <Router>
+        <Layout>
+        <Routes>
+          {appRoutes.map((route) => (
+                        <Route
+                          key={route.key}
+                          path={route.path}
+                          element={<route.component />}
+                        />
+                      ))}
+        </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>      
     )
   }
 export default App

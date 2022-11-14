@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from core.models import Post, Category
+from core.notification.models import Post, Category
 
 
 class Test_Create_Post(TestCase):

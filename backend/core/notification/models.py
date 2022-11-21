@@ -15,7 +15,7 @@ class Post(models.Model):
 
     class PostObjects(models.Manager):
         def get_queryset(self):
-            return super().get_queryset().filter(status='published')
+            return super().get_queryset().filter(status='published').order_by('id')
 
     options = (
         ('draft', 'Draft'),

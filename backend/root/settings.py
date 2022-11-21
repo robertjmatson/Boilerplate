@@ -27,10 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = 'core_user.User'
-# Application definition
+
 
 INSTALLED_APPS = [
+    'core',
+    'core.user',
+    'core.notification',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'core.notification',
-    'core.user',
     'api',
 ]
+AUTH_USER_MODEL = 'core_user.User'
+# Application definition
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

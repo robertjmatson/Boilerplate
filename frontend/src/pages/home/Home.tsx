@@ -21,21 +21,6 @@ export function Home() {
     );
 }
 
-
-class connectionExample extends React.Component {
-    componentDidMount() {
-        const apiURL = 'http://127.0.0.1:8000/api/';
-        fetch(apiURL)
-            .then((response) => response.json())
-            .then((data) => console.log(data));
-    }
-    render() {
-        return <h1>hello</h1>;
-    }
-}
-
-
-
 function Notelist3() {
     const [getId, setGetId] = useState("");
     const [getTitle, setGetTitle] = useState("");
@@ -52,7 +37,7 @@ function Notelist3() {
         return await NewsService.findAll();
       },
       {
-        enabled: false,
+        enabled: true,
         onSuccess: (res) => {
           setGetResult(fortmatResponse(res));
         },

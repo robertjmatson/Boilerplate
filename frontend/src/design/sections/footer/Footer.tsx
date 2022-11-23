@@ -46,7 +46,7 @@ export default function Footer() {
 			paddingTop: "1rem",
 			paddingBottom: "1rem",
 			}}>
-			<Grid container sm={12} lg={12} justifyContent="center">
+			<Grid container justifyContent="center">
 				{footers.map((footer) => (
 					<Item key={footer.title}
 					sx={{ 
@@ -74,8 +74,8 @@ export default function Footer() {
 								padding: 1
 							}}>
 							{footer.description.map((item) => (
-								<li>
-								<Link key={item} href="#" variant="subtitle1" color="textSecondary">
+								<li key={item}>
+								<Link  href="#" variant="subtitle1" color="textSecondary">
 									{item}
 								</Link>
 								</li>

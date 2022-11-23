@@ -1,8 +1,9 @@
 from django.urls import reverse  
 from rest_framework import status
 from rest_framework.test import APITestCase
-from core.models import Post, Category
-from django.contrib.auth.models import User
+from core.notification.models import Post, Category
+from django.conf import settings
+User = settings.AUTH_USER_MODEL
 
 class PostTests(APITestCase):
     def test_view_posts(self):

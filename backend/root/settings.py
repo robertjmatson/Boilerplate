@@ -150,6 +150,12 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+# Permissions:
+# AllowAny
+# IsAuthenticated
+# isAdminUser
+# IsAuthenticatedOrReadOnly
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",

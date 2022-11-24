@@ -3,8 +3,8 @@ import { Home } from "./pages/home/Home"
 import { About } from "./pages/About"
 import { NotFound } from "./pages/NotFound"
 import { Contact } from "./pages/Contact"
-  
-
+import { Login } from "./pages/login/login"
+import { Profile } from "./pages/profile/Profile"
 
 // other
 import {FC} from "react";
@@ -19,32 +19,10 @@ interface Route {
 }
 
 export const routes: Array<Route> = [
-    {
-        key: 'home-route',
-        title: 'Home',
-        path: '/',
-        enabled: true,
-        component: Home
-    },
-    {
-        key: 'about-route',
-        title: 'About',
-        path: '/about',
-        enabled: true,
-        component: About
-    },
-    {
-        key: 'Contact-route',
-        title: 'Contact',
-        path: '/Contact',
-        enabled: true,
-        component: Contact
-    },
-    {
-      key: '404-route',
-      title: 'NotFound',
-      path: '*',
-      enabled: true,
-      component: NotFound
-  },
+    { key: 'home-route', title: 'Home', path: '/', enabled: true, component: Home },
+    { key: 'login-route', title: 'Login', path: '/login', enabled: true, component: Login },
+    { key: 'profile-route', title: 'Profile', path: '/profile', enabled: true, component: Profile },
+    { key: 'about-route', title: 'About', path: '/about', enabled: true, component: About },
+    { key: 'Contact-route', title: 'Contact', path: '/Contact', enabled: true, component: Contact },
+    { key: '404-route', title: 'NotFound', path: '*', enabled: true, component: NotFound },
 ]

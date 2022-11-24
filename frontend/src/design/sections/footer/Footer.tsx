@@ -6,7 +6,8 @@ import { Container } from '@mui/system';
 const footers = [
 	{
 		title: 'Company',
-		description: ['Team', 'History', 'Contact us'],
+		description: ['Team', 'History', 'Contact us'
+		],
 	},
 	{
 		title: 'Features',
@@ -29,8 +30,10 @@ const footers = [
 	}
 
 ];
+
+
 const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+	backgroundColor: theme.palette.mode === 'light' ? '#1A2027' : '#fff',
 	...theme.typography.body2,
 	padding: theme.spacing(1),
 	textAlign: 'center',
@@ -38,14 +41,19 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 export default function Footer() {
   return (
-    <Box 
-		sx={{ 
-			width: "100%",
-			height: "auto",
-			backgroundColor: "primary.main",
-			paddingTop: "1rem",
-			paddingBottom: "1rem",
-			}}>
+	<Box
+	component="footer"
+	sx={{
+	  py: 3,
+	  px: 2,
+	  mt: 'auto',
+	  backgroundColor: (theme) =>
+		theme.palette.mode === 'light'
+		  ? theme.palette.grey[200]
+		  : theme.palette.grey[800],
+	}}
+  >
+
 			<Grid container justifyContent="center">
 				{footers.map((footer) => (
 					<Item key={footer.title}

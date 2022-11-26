@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createTheme } from "@mui/material"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { routes as appRoutes } from "./routes";
+import { routes as appRoutes } from "./utils/routes";
 import { ThemeProvider, CssBaseline, Switch } from "@mui/material";
 import { theme } from './design/theme';
 import Layout from './design/layout';

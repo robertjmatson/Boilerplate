@@ -1,34 +1,20 @@
 
-import News from "../types/news";
-import { apiClient } from "../services/axios";
+import { News } from '../../utils/types/news'
+import axios from 'axios'
+import {
+  useQuery,
+  useQueryClient,
+  useMutation,
+} from '@tanstack/react-query'
+import {BASE_URL} from '../env'
 
-const findAll = async () => {
-  const response = await apiClient.get<News[]>("api/");
-  return response.data;
+async function fetchNews(): Promise<News> {
+  const res = await axios.get(BASE_URL + 'api/')
+  console.log(res.data)
+  return res.data
 }
 
-const findById = async (id: any) => {
-  const response = await apiClient.get<News>(`api/${id}`);
-  return response.data;
+export function useNews() {
+  return useQuery(['news'], fetchNews)
 }
 
-const create = async ({ title, content, status, excerpt }: News) => {
-  const response = await apiClient.post<any>("api/", { title, content, status, excerpt });
-  return response.data;
-}
-
-const deleteById = async (id: any) => {
-  const response = await apiClient.delete<any>(`api/${id}`);
-  return response.data;
-}
-
-
-
-const NewsService = {
-  findAll,
-  findById,
-  create,
-  deleteById,
-}
-
-export default NewsService;

@@ -1,69 +1,50 @@
-import { Typography } from "@mui/material"
-import { useState, useEffect } from 'react'
+import * as React from 'react'
+import { useNews } from '../../utils/api/newsapi'
 
 
-import { useQuery } from '@tanstack/react-query'
+function News() {
+  const [text, setText] = React.useState('')
+  const { isFetching, ...queryInfo } = useNews()
 
-import NewsService from "../../utils/api/newsapi"
-import News from '../../utils/types/news';
-
-export function Home() {
-
-    return (
-    <>
-        <Typography variant="h2">
-            Home
-        </Typography>
-        <Notelist3 />
-    </>
-    );
+  return (
+    <div>
+      <p>
+      </p>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
+      >
+        <input
+          type="text"
+          onChange={(event) => setText(event.target.value)}
+          value={text}
+        />
+        <button>Create</button>
+      </form>
+      <br />
+      {queryInfo.isSuccess && (
+        <>
+          <ul>
+          {queryInfo.data.map((news) => (
+              <li key={news.id}>{news.title}</li>
+            ))}
+          </ul>
+          {isFetching && <div>Updating...</div>}
+        </>
+      )}
+      {queryInfo.isLoading && 'Loading'}
+      {queryInfo.error instanceof Error && queryInfo.error.message}
+    </div>
+  )
 }
 
-function Notelist3() {
-  
-    const [getResult, setGetResult] = useState<string | null>(null);
-  
-    const fortmatResponse = (res: any) => {
-      return JSON.stringify(res, null, 2);
-    };
-  
-    const { isLoading: isLoadingNews, refetch: getAllNews } = useQuery<News[], Error>(
-      ['News-Query'],
-      async () => {
-        return await NewsService.findAll();
-      },
-      {
-        enabled: true,
-        onSuccess: (res) => {
-          setGetResult(fortmatResponse(res));
-        },
-        onError: (err: any) => {
-          setGetResult(fortmatResponse(err.response?.data || err));
-        },
-      }
-    );
-  
-    useEffect(() => {
-      if (isLoadingNews) setGetResult("loading...");
-    }, [isLoadingNews]);
-  
-    function getAllData() {
-      try {
-        getAllNews();
-      } catch (err) {
-        setGetResult(fortmatResponse(err));
-      }
-    }
-  
-    return (
-      <>
-      {getResult && (
-              <div className="alert alert-secondary mt-2" role="alert">
-                <pre>{getResult}</pre>
-              </div>
-            )}
-  
-  
-      </>
-    )
-  }
+
+
+export function Home() {
+  return (
+    <>
+      <News />
+    </>
+  )
+}

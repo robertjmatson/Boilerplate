@@ -10,7 +10,6 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <CssBaseline />
       <Box
         sx={{
           display: "flex",

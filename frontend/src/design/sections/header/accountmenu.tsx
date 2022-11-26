@@ -74,6 +74,8 @@ export default function AccountMenu() {
         <Link to="/Profile"><MenuItem>
           <Avatar /> Profile
         </MenuItem></Link>
+        <MenuItem>
+        </MenuItem>
         <Divider />
         <MenuItem>
           <ListItemIcon>

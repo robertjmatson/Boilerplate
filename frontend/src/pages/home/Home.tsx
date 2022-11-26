@@ -1,12 +1,10 @@
-import React from 'react';
-import { Button, Typography } from "@mui/material"
-import { CustomButton } from "../../design/components/buttons"
+import { Typography } from "@mui/material"
 import { useState, useEffect } from 'react'
 
 
-import { useQuery, useMutation } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-import NewsService from "../../utils/services/newsapi"
+import NewsService from "../../utils/api/newsapi"
 import News from '../../utils/types/news';
 
 export function Home() {
@@ -22,8 +20,6 @@ export function Home() {
 }
 
 function Notelist3() {
-    const [getId, setGetId] = useState("");
-    const [getTitle, setGetTitle] = useState("");
   
     const [getResult, setGetResult] = useState<string | null>(null);
   
@@ -32,7 +28,7 @@ function Notelist3() {
     };
   
     const { isLoading: isLoadingNews, refetch: getAllNews } = useQuery<News[], Error>(
-      ['query-tutorials'],
+      ['News-Query'],
       async () => {
         return await NewsService.findAll();
       },

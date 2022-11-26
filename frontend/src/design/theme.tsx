@@ -1,18 +1,14 @@
 import { createTheme } from "@mui/material"
+import { useState, useMemo, createContext } from "react";
 
 export const theme = createTheme({
     palette: {
-      mode: "light",
       primary: {
-        light: "#63b8ff",
-        main: "#0989e3",
-        dark: "#005db0",
+        main: "#67c98d",
         contrastText: "#000",
       },
       secondary: {
-        main: "#85c2ed",
-        light: "#82e9de",
-        dark: "#00867d",
+        main: "#bce3cb",
         contrastText: "#000",
       },
     },

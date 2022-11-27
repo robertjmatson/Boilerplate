@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material'
 import * as React from 'react'
 import { useNews } from '../../utils/api/newsapi'
 
@@ -15,6 +16,11 @@ function News() {
           e.preventDefault()
         }}
       >
+        <TextField id="title" label="Title" defaultValue="title" />
+        <TextField id="author" label="Author" defaultValue="1" />
+        <TextField id="excerpt" label="Excerpt" defaultValue="Excerpt" />
+        <TextField id="content" label="Title" defaultValue="Content" />
+        <TextField id="status" label="Status" defaultValue="Published" />
         <input
           type="text"
           onChange={(event) => setText(event.target.value)}

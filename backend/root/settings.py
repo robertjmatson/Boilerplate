@@ -30,9 +30,8 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
-    'core',
-    'core.user',
-    'core.notification',
+    'user',
+    'news',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'api',
 ]
-AUTH_USER_MODEL = 'core_user.User'
+AUTH_USER_MODEL = 'user.User'
 # Application definition
 
 MIDDLEWARE = [

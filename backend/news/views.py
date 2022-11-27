@@ -1,5 +1,5 @@
 from rest_framework import generics
-from core.notification.models import Post
+from .models import Post
 from .serializers import PostSerializer
 
 

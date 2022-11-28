@@ -1,89 +1,57 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import {Box, Link, Grid, Typography, Paper}from '@mui/material';
+import {Box, Link as MuiLink, Grid, Typography, Paper}from '@mui/material';
+import { Link } from "react-router-dom";
 import { Container } from '@mui/system';
 
 const footers = [
-	{
-		title: 'Company',
-		description: ['Team', 'History', 'Contact us'],
-	},
-	{
-		title: 'Features',
-		description: [
-			'Cool stuff',
-			'Random feature',
-			'Team feature',
-			'Developer stuff',
-			'Another one',
-		],
-	},
-	{
-		title: 'Resources',
-		description: [
-			'Resource',
-			'Resource name',
-			'Another resource',
-			'Final resource',
-		],
-	}
+	{ name: 'about us',		link: '/about',},
+	{ name: 'contact us',	link: '/contact',},
+	{ name: 'about us2',	link: '/about',},
+	{ name: 'contact us2',	link: '/contact',},
+	{ name: 'about us3',	link: '/about',},
+	{ name: 'contact us3',	link: '/contact',},
+]
 
-];
-const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: 'center',
-	color: theme.palette.text.secondary,
-  }));
+
+
 export default function Footer() {
   return (
-    <Box 
-		sx={{ 
-			width: "100%",
-			height: "auto",
-			backgroundColor: "primary.main",
-			paddingTop: "1rem",
-			paddingBottom: "1rem",
-			}}>
-			<Grid container justifyContent="center">
-				{footers.map((footer) => (
-					<Item key={footer.title}
+	<Box
+		component="footer"
+		sx={{
+			py: 1,
+			px: 1,
+			mt: 'auto',
+			backgroundColor: "primary.main"
+
+		}}
+  	>
+		<Grid 
+			container 
+			justifyContent="center" 
+			sx=
+				{{
+					backgroundColor: 'secondary.main', 
+					width: '100%'
+				}} 
+		>
+			{footers.map((footers) => 
+			(
+				<Grid item sm={4} lg={1}
+					key={footers.name}
 					sx={{ 
-						minWidth: "10%",
-					margin: ".2rem",
-					backgroundColor: "secondary.main",
-					
-					}}> 
-						<Box
-							id={footer.title}
-							sx={{ 
-								fontSize: '14px', 
-								textTransform: 'uppercase',
-								textAlign: 'Left',
-							}}
-						>
-							{footer.title}
-						</Box>
-						<Box 
-							component="ul" 
-							aria-labelledby={footer.title}
-							sx={{ 
-								textAlign: 'Left',
-								margin: 0,
-								padding: 1
-							}}>
-							{footer.description.map((item) => (
-								<li key={item}>
-								<Link  href="#" variant="subtitle1" color="textSecondary">
-									{item}
-								</Link>
-								</li>
-							))}
-						</Box>
-					</Item>
+						fontSize: '9px', 
+						textTransform: 'uppercase',
+						textAlign: 'Left',
+				}}>
+					<Link to={footers.link }>
+						{footers.name}
+					</Link>
+				</Grid>
 			))}
-			</Grid>
+
+		</Grid>
     </Box>
   );
 }

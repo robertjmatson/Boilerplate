@@ -6,7 +6,6 @@ import  AccountMenu from './accountmenu';
 function Header() {
   return(
     <React.Fragment>
-      <CssBaseline />
       <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h4" color="inherit" noWrap>

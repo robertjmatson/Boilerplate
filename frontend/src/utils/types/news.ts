@@ -1,8 +1,7 @@
-export default interface News {
-    id?: any | null,
-    title: string,
-    excerpt?: string,
-    content: string,
-    status: string
-  }
-  
+export type News = [{
+  id: string,
+  title: string,
+  excerpt?: string,
+  content: string,
+  status: string,
+}]

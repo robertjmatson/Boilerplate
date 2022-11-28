@@ -10,7 +10,6 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <CssBaseline />
       <Box
         sx={{
           display: "flex",
@@ -22,6 +21,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         }}
       >
         <Header />
+
         {children}
         <Footer />
       </Box>

@@ -1,6 +1,8 @@
 from rest_framework import generics
-from core.notification.models import Post
-from .serializers import PostSerializer
+from .models import Post, Category
+from .serializers import PostSerializer, CatSerializer
+
+
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.postobjects.all()
@@ -11,4 +13,9 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pass
+
+class CatList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CatSerializer
     pass

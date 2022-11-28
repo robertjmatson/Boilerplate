@@ -1,0 +1,9 @@
+HTTPS Support
+Env variables for both react and django
+
+random uid instead of sequential on user model
+
+rename posts to news maybe add git tags to feed
+change schema of api?
+
+error handling and no response handling

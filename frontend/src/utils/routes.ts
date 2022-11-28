@@ -5,7 +5,7 @@ import { NotFound } from "../pages/NotFound"
 import { Contact } from "../pages/Contact"
 import { Login } from "../pages/login/login"
 import { Profile } from "../pages/profile/Profile"
-
+import { Cat } from "../pages/home/Cat"
 // other
 import {FC} from "react";
 
@@ -20,6 +20,8 @@ interface Route {
 
 export const routes: Array<Route> = [
     { key: 'home-route', title: 'Home', path: '/', enabled: true, component: Home }, 
+    
+    { key: 'cat-route', title: 'Categories', path: '/cat', enabled: true, component: Cat }, 
     { key: 'login-route', title: 'Login', path: '/login', enabled: true, component: Login },
     { key: 'profile-route', title: 'Profile', path: '/profile', enabled: true, component: Profile },
     { key: 'about-route', title: 'About', path: '/about', enabled: true, component: About },

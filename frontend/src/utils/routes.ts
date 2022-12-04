@@ -5,7 +5,7 @@ import { NotFound } from "../pages/NotFound"
 import { Contact } from "../pages/Contact"
 import { Login } from "../pages/login/login"
 import { Profile } from "../pages/profile/Profile"
-import { Category_Page } from "../pages/home/Cat"
+import { Category_Page } from "../pages/home/Category"
 // other
 import {FC} from "react";
 

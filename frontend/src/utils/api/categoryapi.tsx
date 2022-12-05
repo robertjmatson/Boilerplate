@@ -8,20 +8,20 @@ import {BASE_URL} from '../env'
   }[]
 
 async function fetchCat(): Promise<Category> {
-  const res = await axios.get(BASE_URL +'news/categories')
+  const res = await axios.get(BASE_URL +'news/categories/')
   console.log(res.data)
   return res.data
 }
 
 export function useCats() {
-  return useQuery(['cat-q'], fetchCat)
+  return useQuery(['cat-q'], (fetchCat))
 }
 
 export const addCATMutation = () => {
   const queryClient = useQueryClient()
   
   return useMutation(
-    (newCat) => axios.post(BASE_URL +'news/categories', { name: newCat}),
+    (newCat) => axios.post(BASE_URL +'news/categories/', { name: newCat}),
     {    
       // When mutate is called:
       onMutate: async (createdCat: string) => {

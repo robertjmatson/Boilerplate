@@ -22,10 +22,14 @@ export function useNews() {
 export const addNews = () => {
   const queryClient = useQueryClient()
   
+  //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (newNews) => axios.post(BASE_URL +'news/', { 
-      title: newNews 
-
+    ([newsTitle, newsAuthor, newsExcerpt, newsContent, newsStatus]) => axios.post(BASE_URL +'news/', { 
+      title: newsTitle,
+      author: newsAuthor,
+      excerpt: newsExcerpt,
+      content: newsContent,
+      status: newsStatus
     }),
     {    
       // When mutate is called:

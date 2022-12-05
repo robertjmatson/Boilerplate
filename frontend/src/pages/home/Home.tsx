@@ -4,9 +4,13 @@ import { useNews, addNews } from '../../utils/api/newsapi'
 
 
 export function Home() {
-  const [title, setTitle] = React.useState('')
-  const [author, setAuthor] = React.useState('')
-
+  const [newsValues, setNews] = React.useState({
+    title: '',
+    author: '',
+    excerpt: '',
+    content: '',
+    newsStatus: ''
+  });
   const { isFetching, ...queryInfo } = useNews()
   const addMutation = addNews();
 
@@ -14,14 +18,14 @@ const newNewsSection = (
   <form
       onSubmit={(e) => {
         e.preventDefault()
-        addMutation.mutate(title, author, excerpt, content, newsStatus)
+        addMutation.mutate(newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus)
       }}
   >
-    <TextField id="title" label="Title" value={title} />
-    <TextField id="author" label="Author" value={author} />
-    <TextField id="excerpt" label="Excerpt" value={excerpt} />
-    <TextField id="content" label="Title" value={content} />
-    <TextField id="status" label="Status" value={newsStatus} />
+    <TextField id="title" label="Title" value={newsValues.title} />
+    <TextField id="author" label="Author" value={newsValues.author} />
+    <TextField id="excerpt" label="Excerpt" value={newsValues.excerpt} />
+    <TextField id="content" label="Title" value={newsValues.content} />
+    <TextField id="status" label="Status" value={newsValues.newsStatus} />
       <button>Create</button>
     </form>
   )

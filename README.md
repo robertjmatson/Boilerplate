@@ -12,3 +12,7 @@ python manage.py runserver
 coverage run manage.py test
 
 
+For Frontend
+cd frontend
+nmp i
+npm run dev

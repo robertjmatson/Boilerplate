@@ -2,13 +2,17 @@ import axios from 'axios'
 import { useQuery, useQueryClient, useMutation, } from '@tanstack/react-query'
 import {BASE_URL} from '../env'
 
-export type News = {
-  id: string,
+export type rawNews = {
+  //id: string,
   title: string,
+  author: string,
   excerpt?: string,
   content: string,
   status: string,
-}[]
+}
+export type News = {
+  item: rawNews[]
+}
 
 async function fetchNews(): Promise<News> {
   const res = await axios.get(BASE_URL + 'news/')
@@ -24,16 +28,12 @@ export const addNews = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    ([newsTitle, newsAuthor, newsExcerpt, newsContent, newsStatus]) => axios.post(BASE_URL +'news/', { 
-      title: newsTitle,
-      author: newsAuthor,
-      excerpt: newsExcerpt,
-      content: newsContent,
-      status: newsStatus
+    (newNews) => axios.post<News>(BASE_URL +'news/', { 
+      data: newNews
     }),
     {    
       // When mutate is called:
-      onMutate: async (createdNews: string) => {
+      onMutate: async (createdNews: rawNews) => {
         // Cancel any outgoing refetches
         // (so they don't overwrite our optimistic update)
         await queryClient.cancelQueries(['news'])
@@ -43,18 +43,8 @@ export const addNews = () => {
 
         // Optimistically update to the new value
         if (previousNews) {
-          queryClient.setQueryData<News>(['news'], [...previousNews, 
-            {
-              id: Math.random().toString(), 
-              title: createdNews,
-              excerpt: "a",
-              content: "a",
-              status: "Published"
-
-            } ])
-          }
-            
-
+          //queryClient.setQueryData<News>(['cat-q'], [...previousNews, {id: Math.random().toString(), name: createdCat} ])
+          }   
         return { previousNews }
       },
       // If the mutation fails,

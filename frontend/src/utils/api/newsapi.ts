@@ -34,7 +34,7 @@ export const addNews = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (newNews) => axios.post<rawNews>(BASE_URL +'news/', { 
+    (newNews) => axios.post<News>(BASE_URL +'news/', { 
       ...newNews
     }),
     {    
@@ -49,8 +49,14 @@ export const addNews = () => {
 
         // Optimistically update to the new value
         if (previousNews) {
-          //queryClient.setQueryData<News>(['cat-q'], [...previousNews, {id: Math.random().toString(), name: createdCat} ])
-          }   
+          queryClient.setQueryData<News>(['news'], [...previousNews, {
+            id: Math.random().toString(), 
+            title: createdNews.title, 
+            author: createdNews.author, 
+            content: createdNews.content, 
+            status: createdNews.status
+          }])
+        }   
         return { previousNews }
       },
       // If the mutation fails,

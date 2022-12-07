@@ -23,7 +23,6 @@ const newNewsSection = (
       onSubmit={(e) => {
         e.preventDefault()
         addMutation.mutate(newsValues)
-        console.log(newsValues)
       }}
   >
     
@@ -42,9 +41,6 @@ const newNewsSection = (
   } else if (queryInfo.error instanceof Error) {
     content = <p>{queryInfo.error.message}</p>
   } else if (queryInfo.isSuccess ){
-    console.log("start of content")
-    console.log(queryInfo.data)
-    console.log("end of content")
     content = queryInfo.data.map((news) => {
       return (
         <li key={news.id}>{news.title}</li>

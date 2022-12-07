@@ -1,3 +1,4 @@
+import { Title } from '@mui/icons-material';
 import { TextField } from '@mui/material'
 import * as React from 'react'
 import { useNews, addNews } from '../../utils/api/newsapi'
@@ -14,7 +15,6 @@ export function Home() {
     content: '',
     status: '',
   });
-  
   const { isFetching, ...queryInfo } = useNews()
   const addMutation = addNews();
 
@@ -26,10 +26,12 @@ const newNewsSection = (
         console.log(newsValues)
       }}
   >
+    
     <TextField id="title" label="Title" value={newsValues.title} onChange={(event) => setNews(prevNews => ({ ...prevNews, title: event.target.value}))} />
     <TextField id="excerpt" label="Excerpt" value={newsValues.excerpt} onChange={(event) => setNews(prevNews => ({ ...prevNews, excerpt: event.target.value}))} />
     <TextField id="content" label="Title" value={newsValues.content} onChange={(event) => setNews(prevNews => ({ ...prevNews, content: event.target.value}))} />
     <TextField id="status" label="Status" value={newsValues.status} onChange={(event) => setNews(prevNews => ({ ...prevNews, status: event.target.value}))} />
+
       <button>Create</button>
     </form>
   )
@@ -43,10 +45,10 @@ const newNewsSection = (
     console.log("start of content")
     console.log(queryInfo.data)
     console.log("end of content")
-    //content = queryInfo.data.Object.map((news) => {
-    //  return (
-    //    <li key={news.id}>{news.title}</li>
-    //  )})
+    content = queryInfo.data.map((news) => {
+      return (
+        <li key={news.id}>{news.title}</li>
+      )})
   } else {
 
   }

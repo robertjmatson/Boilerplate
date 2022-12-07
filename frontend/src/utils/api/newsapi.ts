@@ -2,6 +2,14 @@ import axios from 'axios'
 import { useQuery, useQueryClient, useMutation, } from '@tanstack/react-query'
 import {BASE_URL} from '../env'
 
+export type News = {
+  id: string,
+  title: string,
+  author: string,
+  excerpt?: string,
+  content: string,
+  status: string,
+}[]
 export type rawNews = {
   id: string,
   title: string,
@@ -9,9 +17,6 @@ export type rawNews = {
   excerpt?: string,
   content: string,
   status: string,
-}
-export type News = {
-  Object: rawNews[]
 }
 
 async function fetchNews(): Promise<News> {
@@ -29,7 +34,7 @@ export const addNews = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (newNews) => axios.post<News>(BASE_URL +'news/', { 
+    (newNews) => axios.post<rawNews>(BASE_URL +'news/', { 
       ...newNews
     }),
     {    

@@ -7,7 +7,7 @@ import { rawNews } from '../../utils/api/newsapi';
 
 export function Home() {
   const [newsValues, setNews] = React.useState<rawNews>({
-    //id: '',
+    id: '',
     title: '',
     author: '1',
     excerpt: '',
@@ -40,7 +40,10 @@ const newNewsSection = (
   } else if (queryInfo.error instanceof Error) {
     content = <p>{queryInfo.error.message}</p>
   } else if (queryInfo.isSuccess ){
-    //content = queryInfo.data.item.map((news) => {
+    console.log("start of content")
+    console.log(queryInfo.data)
+    console.log("end of content")
+    //content = queryInfo.data.Object.map((news) => {
     //  return (
     //    <li key={news.id}>{news.title}</li>
     //  )})

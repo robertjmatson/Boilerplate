@@ -23,6 +23,7 @@ export const addCATMutation = () => {
   return useMutation(
     (newCat) => axios.post(BASE_URL +'news/categories/', { name: newCat}),
     {    
+      
       // When mutate is called:
       onMutate: async (createdCat: string) => {
         // Cancel any outgoing refetches

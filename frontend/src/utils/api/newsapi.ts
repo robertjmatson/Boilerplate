@@ -2,14 +2,7 @@ import axios from 'axios'
 import { useQuery, useQueryClient, useMutation, } from '@tanstack/react-query'
 import {BASE_URL} from '../env'
 
-export type News = {
-  id: string,
-  title: string,
-  author: string,
-  excerpt?: string,
-  content: string,
-  status: string,
-}[]
+
 export type rawNews = {
   id: string,
   title: string,
@@ -19,7 +12,9 @@ export type rawNews = {
   status: string,
 }
 
-async function fetchNews(): Promise<News> {
+export type NewsArray = Array<rawNews>
+
+async function fetchNews(): Promise<NewsArray> {
   const res = await axios.get(BASE_URL + 'news/')
   //console.log(res.data)
   return res.data
@@ -34,7 +29,7 @@ export const addNews = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (newNews) => axios.post<News>(BASE_URL +'news/', { 
+    (newNews) => axios.post<NewsArray>(BASE_URL +'news/', { 
       ...newNews
     }),
     {    
@@ -45,11 +40,11 @@ export const addNews = () => {
         await queryClient.cancelQueries(['news'])
 
         // Snapshot the previous value
-        const previousNews = queryClient.getQueryData<News>(['news'])
+        const previousNews = queryClient.getQueryData<NewsArray>(['news'])
 
         // Optimistically update to the new value
         if (previousNews) {
-          queryClient.setQueryData<News>(['news'], [...previousNews, {
+          queryClient.setQueryData<NewsArray>(['news'], [...previousNews, {
             id: Math.random().toString(), 
             title: createdNews.title, 
             author: createdNews.author, 
@@ -64,7 +59,7 @@ export const addNews = () => {
       // use the context returned from onMutate to roll back
       onError: (err, variables, context) => {
         if (context?.previousNews) {
-          queryClient.setQueryData<News>(['news'], context.previousNews)
+          queryClient.setQueryData<NewsArray>(['news'], context.previousNews)
         }
       },
       // Always refetch after error or success:

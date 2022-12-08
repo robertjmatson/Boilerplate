@@ -57,6 +57,7 @@ export const addNews = () => {
             status: createdNews.status
           }])
         }   
+          
         return { previousNews }
       },
       // If the mutation fails,

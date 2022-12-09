@@ -13,7 +13,7 @@ export const getToken = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (auth) => axios.post<auth_item>(BASE_URL +'auth/', { 
+    (auth) => axios.post<auth_item>(BASE_URL +'auth/login/', { 
       ...auth
     }),
     {    

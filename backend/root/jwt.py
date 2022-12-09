@@ -3,6 +3,11 @@ from datetime import timedelta
 #THIS NEEDS TO BE CHANGED
 SECRET_KEY = 'akjosdijfosdijfosdijfsodijfsdoijfsdoij'
 
+REST_USE_JWT = True
+#JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),

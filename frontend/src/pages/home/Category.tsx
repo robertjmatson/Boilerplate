@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material'
 import * as React from 'react'
-import { useCats, addCATMutation } from '../../utils/api/categoryapi'
+import { useCats, addCATMutation } from '../../utils/api/newsapi'
 
 export function Category_Page() {
   const [name, setText] = React.useState('')

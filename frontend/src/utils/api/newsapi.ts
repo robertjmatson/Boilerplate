@@ -30,7 +30,6 @@ export function useNews() {
 
 async function fetchCat(): Promise<Category> {
   const res = await axios.get(BASE_URL +'news/categories/')
-  console.log(res.data)
   return res.data
 }
 
@@ -44,7 +43,7 @@ export const addNews = () => {
   const queryClient = useQueryClient()
   
   return useMutation(
-    (newNews) => axios.post<NewsArray>(BASE_URL +'news/', { 
+    (newNews) => axios.post(BASE_URL +'news/', { 
       ...newNews
     }),
     {    

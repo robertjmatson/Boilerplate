@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import * as React from 'react'
 import { useNews, addNews, rawNews } from '../../utils/api/newsapi'
-
+import {Loading} from '../../design/components/Loading'
 
 
 export function Home() {
@@ -35,7 +35,7 @@ const newNewsSection = (
   
   let content
   if (queryInfo.isLoading) {
-    content = <p>Loading...</p>
+    content = <Loading />
   } else if (queryInfo.error instanceof Error) {
     content = <p>{queryInfo.error.message}</p>
   } else if (queryInfo.isSuccess ){

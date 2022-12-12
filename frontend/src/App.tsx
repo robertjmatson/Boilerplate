@@ -5,7 +5,7 @@ import { theme } from './design/theme';
 import Layout from './design/layout';
 import { QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { queryClient } from './utils/queryClient'
+import { queryClient } from './utils/react-query/queryClient'
 
 
 export default function App() { 

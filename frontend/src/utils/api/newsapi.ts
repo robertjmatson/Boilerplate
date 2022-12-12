@@ -2,6 +2,19 @@ import axios from 'axios'
 import { useQuery, useQueryClient, useMutation, } from '@tanstack/react-query'
 import {BASE_URL} from '../env'
 
+export interface Id {
+  id: number;
+}
+
+export type newNews = {
+  title: string,
+  author: string,
+  excerpt?: string,
+  content: string,
+  status: string,
+}
+
+export type News = Id & newNews;
 
 export type Category = {
   id: string,

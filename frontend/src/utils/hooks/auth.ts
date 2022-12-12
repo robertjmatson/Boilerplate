@@ -1,6 +1,6 @@
-import axios from 'axios'
 import { useQuery, useQueryClient, useMutation, } from '@tanstack/react-query'
-import {BASE_URL} from '../env'
+import { axiosInstance } from '../react-query/axios'
+import { queryKeys } from '../react-query/keys'
 
 export type auth_item = {
   email: string,
@@ -13,21 +13,17 @@ export const getToken = () => {
   
   //newsValues.title, newsValues.author, newsValues.excerpt, newsValues.content, newsValues. newsStatus
   return useMutation(
-    (auth) => axios.post<auth_item>(BASE_URL +'auth/login/', { 
+    (auth) => axiosInstance.post<auth_item>('auth/login/', { 
       ...auth
+      
     }),
     {    
       // When mutate is called:
       onMutate: async (credentials: auth_item) => {
         // Cancel any outgoing refetches
         // (so they don't overwrite our optimistic update)
-        await queryClient.cancelQueries(['auth'])
-
-        // Snapshot the previous value
-        const previousNews = queryClient.getQueryData<auth_item>(['auth'])
-
-        // Optimistically update to the new value
-
+        await queryClient.cancelQueries([])
+        
         return { }
       },
       // If the mutation fails,

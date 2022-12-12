@@ -8,7 +8,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
-import { auth_item, getToken } from '../../utils/api/auth'
+import { auth_item, getToken } from '../../utils/hooks/auth'
 
 export function Login() {
   const [authValues, setAuth] = React.useState<auth_item>({
@@ -20,7 +20,7 @@ export function Login() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         loginMutation.mutate(authValues)
-        //console.log(authValues)
+        console.log(loginMutation.data)
       };
 
     return (

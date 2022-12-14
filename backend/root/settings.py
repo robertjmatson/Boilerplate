@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
+    'dj_rest_auth',
 ]
 AUTH_USER_MODEL = 'user.User'
 # Application definition
@@ -145,7 +147,8 @@ REST_FRAMEWORK = {
     ],
     #https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#installation
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 # Permissions:

@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { createTheme } from "@mui/material"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { routes as appRoutes } from "./utils/routes";
 import { ThemeProvider, CssBaseline, Switch } from "@mui/material";
 import { theme } from './design/theme';
 import Layout from './design/layout';
-
+import { QueryClientProvider } from "@tanstack/react-query"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { queryClient } from './utils/react-query/queryClient'
 
 
 export default function App() { 
     return (
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Router>
+          <QueryClientProvider client={queryClient}>
+
             <Layout>
+
               <Routes>
                 {appRoutes.map((route) => (
                   <Route
@@ -24,7 +26,8 @@ export default function App() {
                 ))}
               </Routes>
             </Layout>
-          </Router>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
         </ThemeProvider> 
     )
     

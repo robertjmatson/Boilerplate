@@ -7,3 +7,15 @@ rename posts to news maybe add git tags to feed
 change schema of api?
 
 error handling and no response handling
+
+
+
+
+jwt login, 
+pass user to news author field
+delete refresh token options
+permissions
+auth guard
+
+
+readd Optimistic upate to Add News

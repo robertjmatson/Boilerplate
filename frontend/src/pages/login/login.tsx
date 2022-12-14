@@ -1,6 +1,6 @@
+import * as React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -8,21 +8,23 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
+import { auth_item, getToken } from '../../utils/hooks/auth'
 
 export function Login() {
+  const [authValues, setAuth] = React.useState<auth_item>({
+    email: '',
+    password: '',
+  })
+  const loginMutation = getToken();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
+        loginMutation.mutate(authValues)
+        console.log(loginMutation.data)
       };
 
     return (
         <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -47,6 +49,8 @@ export function Login() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={authValues.email}
+                  onChange={(event) => setAuth(prevAuth => ({ ...prevAuth, email: event.target.value}))}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -58,6 +62,8 @@ export function Login() {
                   type="password"
                   id="password"
                   autoComplete="password"
+                  value={authValues.password}
+                  onChange={(event) => setAuth(prevAuth => ({ ...prevAuth, password: event.target.value}))}
                 />
               </Grid>
             </Grid>

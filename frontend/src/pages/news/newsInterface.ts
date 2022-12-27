@@ -1,10 +1,8 @@
-
 export interface Id {
   id: number;
 }
 
-export interface News {
-    id: string;
+export interface News extends Id{
     title: string,
     author: string,
     excerpt?: string,
@@ -12,8 +10,6 @@ export interface News {
     status: string,
   }
 
-export interface Category {
-    id: string,
-    name: string,
-  }
-  
+export interface Category extends Id {
+    name: string
+}

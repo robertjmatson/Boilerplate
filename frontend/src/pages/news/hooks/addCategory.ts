@@ -14,8 +14,6 @@ export const addCategory = () => {
         {    
             // When mutate is called:
             onMutate: async (createdCategory: Category) => {
-              // Cancel any outgoing refetches
-              // (so they don't overwrite our optimistic update)
               await queryClient.cancelQueries([queryKeys.category])
       
               // Snapshot the previous value

@@ -1,7 +1,6 @@
 export function Profile() {
-    return <h1>Profile</h1>
+  return <h1>Profile</h1>;
 }
-
 
 import axios from "axios";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -15,6 +14,4 @@ const useSites = (email: string) => {
   return useQuery(["sites", email], () => fetchSites(email));
 };
 
-export {
-  useSites
-};
+export { useSites };

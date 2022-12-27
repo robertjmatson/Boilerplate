@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { Box, CssBaseline } from "@mui/material";
-import Header from './sections/header/Header';
-import Footer from './sections/footer/Footer';
+import Header from "./sections/header/Header";
+import Footer from "./sections/footer/Footer";
 interface LayoutProps {
   children: ReactNode;
 }
